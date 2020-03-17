@@ -1,7 +1,7 @@
 #!/bin/sh
 
 echo -e "=============================================================================="
-echo -e "========================= SHADOWSOCKS SERVER GO =============================="
+echo -e "========================= SHADOWSOCKS Client GO =============================="
 echo -e "=============================================================================="
 
 echo -e '[+] Show Container config'
@@ -11,6 +11,7 @@ echo -e "[!] Local IP : \t\t${LOCAL_IP}"
 echo -e "[!] Local Port : \t${LOCAL_PORT}"
 echo -e "[!] Encryption Method:  ${ENCRYPTION}"
 echo -e "[!] Password : \t\t${PASSWORD}"
+echo -e "[+] Client is ready."
 
 exec /app/shadowsocks-client -c "ss://${ENCRYPTION}:${PASSWORD}@${SERVER_IP}:${SERVER_PORT}" -socks ${LOCAL_IP}:${LOCAL_PORT} -u
 

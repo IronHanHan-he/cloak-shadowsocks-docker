@@ -11,9 +11,10 @@ RUN go get -u -v github.com/shadowsocks/go-shadowsocks2
 FROM alpine:latest
 
 RUN apk upgrade \
-    && apk add tzdata \
+    && apk add --no-cache tzdata \
     && rm -rf /var/cache/apk/*
 
+ENV TZ            Etc/UTC
 ENV SERVER_IP     0.0.0.0
 ENV SERVER_PORT   12345
 ENV ENCRYPTION    AES-256-CFB

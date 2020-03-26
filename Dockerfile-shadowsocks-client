@@ -11,9 +11,10 @@ RUN go get -u -v github.com/shadowsocks/go-shadowsocks2
 FROM alpine:latest
 
 RUN apk upgrade \
-    && apk add tzdata \
+    && apk add --no-cache tzdata \
     && rm -rf /var/cache/apk/*
 
+ENV TZ            Etc/UTC
 ENV SERVER_IP=     
 ENV SERVER_PORT=  
 ENV LOCAL_IP      127.0.0.1

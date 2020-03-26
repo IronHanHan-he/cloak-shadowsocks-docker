@@ -27,9 +27,10 @@ RUN make client
 FROM alpine:latest
 
 RUN apk upgrade \
-    && apk add tzdata \
+    && apk add --no-cache tzdata \
     && rm -rf /var/cache/apk/*
 
+ENV TZ               Etc/UTC
 ENV TRANSPORT        direct
 ENV METHOD           shadowsocks
 ENV ENCRYPTION       plain
@@ -39,8 +40,8 @@ ENV SERVERNAME       example.com
 ENV CONNECTIONNUM    4
 ENV BROWSER          chrome
 ENV SERVER_IP=       
-ENV LOCAL_PORT      443
-ENV ADMINUID        SB2SgfFS2LVew5OSF8L6Bw==
+ENV LOCAL_PORT       443
+ENV ADMINUID         SB2SgfFS2LVew5OSF8L6Bw==
 
 WORKDIR /app
 COPY --from=build /opt/Cloak/build/ck-client /app/ck-client

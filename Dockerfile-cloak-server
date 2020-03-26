@@ -27,9 +27,10 @@ RUN make server
 FROM alpine:latest
 
 RUN apk upgrade \
-    && apk add tzdata \
+    && apk add --no-cache tzdata \
     && rm -rf /var/cache/apk/*
     
+ENV TZ           Etc/UTC
 ENV LOCAL_IP     127.0.0.1
 ENV LOCAL_PORT   12345
 ENV METHOD       shadowsocks
